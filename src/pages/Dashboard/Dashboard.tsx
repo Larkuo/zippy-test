@@ -9,7 +9,7 @@ import {
 
 import { UserContext } from '../../context/UserContext';
 import { styles } from './Dashboard.styles';
-import { OrderListHeader, OrderListItem, OrderListItemProps, TrackingCard } from '../../components';
+import { AppFooter, OrderListHeader, OrderListItem, OrderListItemProps, TrackingCard } from '../../components';
 
 export function Dashboard() {
     const {userDetails} = useContext(UserContext);
@@ -45,6 +45,7 @@ export function Dashboard() {
                 } 
                 contentContainerStyle={styles.orderList}
             />
+            <AppFooter />
         </SafeAreaView>
     );
 }

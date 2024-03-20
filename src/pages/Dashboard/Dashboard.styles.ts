@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: colors.white,
+        position: 'relative',
     },
     dashboardHeader: {
         width: '90%',

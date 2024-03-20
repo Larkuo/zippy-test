@@ -3,3 +3,4 @@ export * from './PrimaryInput/PrimaryInput';
 export * from './TrackingCard/TrackingCard';
 export * from './OrderListHeader/OrderListHeader';
 export * from './OrderListItem/OrderListItem';
+export * from './AppFooter/AppFooter';
