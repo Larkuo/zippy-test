@@ -18,9 +18,9 @@ export function Dashboard() {
 
     const ORDER_DATA: OrderListItemProps[] = [
         {receiver: 'Hagan Kwame', pickup: 'East Legon', dropoff: 'Dzorwulo', orderDate: '15th, Jan, 2024 - 3:00 pm', status: 'in progress'},
-        {receiver: 'Hagan Kwame', pickup: 'East Legon', dropoff: 'Dzorwulo', orderDate: '15th, Jan, 2024 - 3:00 pm', status: 'delivered'},
-        {receiver: 'Hagan Kwame', pickup: 'East Legon', dropoff: 'Dzorwulo', orderDate: '15th, Jan, 2024 - 3:00 pm', status: 'scheduled'},
-        {receiver: 'Hagan Kwame', pickup: 'East Legon', dropoff: 'Dzorwulo', orderDate: '15th, Jan, 2024 - 3:00 pm', status: 'cancelled'},
+        {receiver: 'Monica Yeboah', pickup: 'Airport West', dropoff: 'AnC Mall', orderDate: '15th, Jan, 2024 - 3:00 pm', status: 'delivered'},
+        {receiver: 'Alhaji Bawumia', pickup: 'Accra Mall', dropoff: 'Abelemkpe', orderDate: '15th, Jan, 2024 - 3:00 pm', status: 'scheduled'},
+        {receiver: 'Nana Addo', pickup: 'Atomic Junction', dropoff: 'Kanda', orderDate: '15th, Jan, 2024 - 3:00 pm', status: 'cancelled'},
     ];
 
     return (
@@ -44,6 +44,7 @@ export function Dashboard() {
                     />
                 } 
                 contentContainerStyle={styles.orderList}
+                showsVerticalScrollIndicator={false}
             />
             <AppFooter />
         </SafeAreaView>

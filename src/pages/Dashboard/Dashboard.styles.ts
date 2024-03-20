@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
         position: 'relative',
     },
     dashboardHeader: {
-        width: '90%',
+        width: '95%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
         color: colors.darkGray,
     },
     orderList: {
-        width: '90%',
+        width: '95%',
         marginTop: 30,
         display: 'flex',
         flexDirection: 'column',

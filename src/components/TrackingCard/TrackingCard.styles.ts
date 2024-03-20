@@ -3,10 +3,10 @@ import { colors } from "../../theme";
 
 export const styles = StyleSheet.create({
     trackingCard: {
-        width: '90%',
+        width: '95%',
         backgroundColor: colors.primary,
         borderRadius: 12,
-        padding: '5%',
+        padding: '3.5%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
