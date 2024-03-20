@@ -34,4 +34,12 @@ export const styles = StyleSheet.create({
         lineHeight: 20.8,
         color: colors.darkGray,
     },
+    orderList: {
+        width: '90%',
+        marginTop: 30,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingBottom: 100,
+    },
 });

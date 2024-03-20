@@ -63,12 +63,11 @@ export const styles = StyleSheet.create({
     searchInput: {
         width: '85%',
         height: '100%',
-        fontFamily: 'Plus Jakarta Sans',
+        fontFamily: 'Poppins',
         fontSize: 12,
         fontWeight: '400',
         lineHeight: 15.6,
         color: colors.black,
-        borderWidth: 0,
     },
     searchButton: {
         width: '35%',
