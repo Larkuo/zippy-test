@@ -133,9 +133,6 @@ export function useLoginForm(navigation: NativeStackNavigationProp<ParamListBase
         if(loginDetails.email && loginDetails.password && !emailError.isError && !passwordError.isError){
             login().then(() => {});
         }
-
-        // remove this before submitting
-        navigation.navigate('dashboard');
     }
 
     return{
