@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Image, Pressable, Text, TextInput, View } from 'react-native';
 import { styles } from './PrimaryInput.styles';
-import { colors } from '../../Theme';
+import { colors } from '../../theme';
 import { TextInputErorType } from '../../hooks/useLoginForm';
 
 const EmailIcon = require('../../assets/icons/email_icon.png');
@@ -39,12 +39,12 @@ export function PrimaryInput({
     return (
         <View style={styles.inputView}>
             <View style={styles.labelContainer}>
-                <Text style={styles.inputLabel}>{label || inputType}</Text>
+                <Text style={[styles.inputLabel, error?.isError && {color: colors.red}]}>{label || inputType}</Text>
                 {error?.isError &&
                     <Text style={styles.errorText}>{error?.message}</Text>
                 }
             </View>
-            <View style={styles.inputContainer}>
+            <View style={[styles.inputContainer, error?.isError && {borderColor: colors.red}]}>
                 <TextInput
                     style={styles.textInput}
                     placeholder={placeholder || `Your ${inputType}`}

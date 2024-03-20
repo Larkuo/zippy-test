@@ -19,7 +19,7 @@ export function Login() {
         passwordError,
         onChangeEmail,
         onChangePassword,
-        login
+        onPressLogin
     } = useLoginForm();
 
     return (
@@ -46,7 +46,7 @@ export function Login() {
                 />
                 <PrimaryButton 
                     title='Login' 
-                    onPress={login}
+                    onPress={onPressLogin}
                 />
             </View>
         </SafeAreaView>

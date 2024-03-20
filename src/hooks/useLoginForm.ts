@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Toast } from "react-native-toast-notifications";
 export interface TextInputErorType{
     isError: boolean;
     message: string;
@@ -14,7 +14,7 @@ export function useLoginForm():{
     loginDetails: LoginDetailsType;
     emailError: TextInputErorType;
     passwordError: TextInputErorType;
-    login: () => void;
+    onPressLogin: () => void;
     onChangeEmail: (text: string) => void;
     onChangePassword: (text: string) => void;
 }{
@@ -63,8 +63,62 @@ export function useLoginForm():{
             });
         }
     }
+
+    async function login(){
+        const loginResponse = await fetch('https://coding.zippy.com.gh/api/login', {
+            method: 'POST',
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({...loginDetails}),
+        });
+
+        if(loginResponse && loginResponse.ok && loginResponse.status === 201){
+            const loginResponseBody = await loginResponse.json();
+
+            if(loginResponseBody.responseCode === '002'){
+                const data = loginResponseBody.data;
+
+                Toast.show(loginResponseBody.responseDesc, {
+                    type: 'success', placement: 'top'});
+
+            }else{
+                Toast.show(loginResponseBody.responseDesc, {
+                    type: 'danger', placement: 'top'});
+            }
+        }else{
+            Toast.show('Error occured while trying to login. Please try again', {
+                type: 'danger',
+            });
+        }
+    }
     
-    function login(){}
+    function onPressLogin(){
+        if(!loginDetails.email || emailError.isError){
+            setEmailError({
+                isError: true,
+                message: 'Invalid email',
+            });
+
+            Toast.show('Enter a valid email', {
+                type: 'danger', placement: 'top'});
+        }
+
+        if(!loginDetails.password || passwordError.isError){
+            setPasswordError({
+                isError: true,
+                message: 'Invalid password',
+            });
+
+            Toast.show('Enter a valid password', {
+                type: 'danger', placement: 'top'});
+        }
+
+        if(loginDetails.email && loginDetails.password && !emailError.isError && !passwordError.isError){
+            login().then(() => {});
+        }
+    }
 
     return{
         loginDetails,
@@ -72,6 +126,6 @@ export function useLoginForm():{
         passwordError,
         onChangeEmail,
         onChangePassword,
-        login
+        onPressLogin,
     }
 }
