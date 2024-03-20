@@ -8,19 +8,22 @@ import {
 import { styles } from './Login.styles';
 import { PrimaryInput, PrimaryButton } from '../../components';
 import { useLoginForm } from '../../hooks/useLoginForm';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { ParamListBase } from "@react-navigation/native";
 
 const ZippyLogo = require('../../assets/zippy_logo.png');
 
 
-export function Login() {
+export function Login({
+    navigation
+}:{navigation: NativeStackNavigationProp<ParamListBase>;}) {
     const {
-        loginDetails,
         emailError,
         passwordError,
         onChangeEmail,
         onChangePassword,
         onPressLogin
-    } = useLoginForm();
+    } = useLoginForm(navigation);
 
     return (
         <SafeAreaView style={styles.loginPage}>

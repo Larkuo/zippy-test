@@ -1,13 +1,19 @@
 import React from 'react';
 import { ToastProvider } from 'react-native-toast-notifications';
-import { Login } from '../pages';
+import { UserContextProvider } from '../context/UserContext';
+import { AppNavigator } from '../navigation/AppNavigator';
+import {NavigationContainer} from '@react-navigation/native';
 
 
 function App(): React.JSX.Element {
     return (
-      <ToastProvider>
-        <Login />
-      </ToastProvider>
+      <NavigationContainer>
+        <UserContextProvider>
+          <ToastProvider>
+            <AppNavigator />
+          </ToastProvider>
+        </UserContextProvider>
+      </NavigationContainer>
     );
 }
 

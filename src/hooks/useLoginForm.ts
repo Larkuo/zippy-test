@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Toast } from "react-native-toast-notifications";
+import { UserContext } from "../context/UserContext";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ParamListBase } from "@react-navigation/native";
+
 export interface TextInputErorType{
     isError: boolean;
     message: string;
@@ -10,7 +14,7 @@ export interface LoginDetailsType{
     password: string;
 }
 
-export function useLoginForm():{
+export function useLoginForm(navigation: NativeStackNavigationProp<ParamListBase>):{
     loginDetails: LoginDetailsType;
     emailError: TextInputErorType;
     passwordError: TextInputErorType;
@@ -27,6 +31,8 @@ export function useLoginForm():{
         email: '', 
         password: ''
     }
+
+    const {changeUserDetails, changeAuthentication} = useContext(UserContext);
 
     const [loginDetails, setLoginDetails] = useState(DEFAULT_LOGIN_DETAILS);
 
@@ -65,6 +71,9 @@ export function useLoginForm():{
     }
 
     async function login(){
+        let data: any;
+        let authenticated = false;
+
         const loginResponse = await fetch('https://coding.zippy.com.gh/api/login', {
             method: 'POST',
             headers: {
@@ -78,10 +87,13 @@ export function useLoginForm():{
             const loginResponseBody = await loginResponse.json();
 
             if(loginResponseBody.responseCode === '002'){
-                const data = loginResponseBody.data;
+                data = loginResponseBody.data;
+                authenticated = true;
 
                 Toast.show(loginResponseBody.responseDesc, {
                     type: 'success', placement: 'top'});
+
+                navigation.navigate('dashboard');
 
             }else{
                 Toast.show(loginResponseBody.responseDesc, {
@@ -92,6 +104,9 @@ export function useLoginForm():{
                 type: 'danger',
             });
         }
+
+        changeAuthentication(authenticated);
+        changeUserDetails(data);
     }
     
     function onPressLogin(){
@@ -118,6 +133,9 @@ export function useLoginForm():{
         if(loginDetails.email && loginDetails.password && !emailError.isError && !passwordError.isError){
             login().then(() => {});
         }
+
+        // remove this before submitting
+        navigation.navigate('dashboard');
     }
 
     return{
