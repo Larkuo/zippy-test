@@ -6,12 +6,22 @@ import {
   View,
 } from 'react-native';
 import { styles } from './Login.styles';
-import { PrimaryButton } from '../../components';
+import { PrimaryInput, PrimaryButton } from '../../components';
+import { useLoginForm } from '../../hooks/useLoginForm';
 
 const ZippyLogo = require('../../assets/zippy_logo.png');
 
 
 export function Login() {
+    const {
+        loginDetails,
+        emailError,
+        passwordError,
+        onChangeEmail,
+        onChangePassword,
+        login
+    } = useLoginForm();
+
     return (
         <SafeAreaView style={styles.loginPage}>
             <Image 
@@ -24,7 +34,20 @@ export function Login() {
                 <Text>Enter your credentials to access your account</Text>
             </View>
             <View style={styles.formContainer}>
-                <PrimaryButton title='Login' />
+                <PrimaryInput 
+                    inputType={'email'} 
+                    onChangeText={onChangeEmail}
+                    error={emailError}
+                />
+                <PrimaryInput 
+                    inputType={'password'} 
+                    onChangeText={onChangePassword}
+                    error={passwordError}
+                />
+                <PrimaryButton 
+                    title='Login' 
+                    onPress={login}
+                />
             </View>
         </SafeAreaView>
     );
