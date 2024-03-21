@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Image, Pressable, Text, TextInput, View } from 'react-native';
 import { styles } from './PrimaryInput.styles';
-import { colors } from '../../theme';
+import { colors } from '../../Theme';
 import { TextInputErorType } from '../../hooks/useLoginForm';
 
 const EmailIcon = require('../../assets/icons/email_icon.png');

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Text, View } from 'react-native';
 import { styles } from './OrderListItem.styles';
-import { colors } from '../../theme';
+import { colors } from '../../Theme';
 
 const CourierIcon = require('../../assets/icons/courier_icon.png');
 

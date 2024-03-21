@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../theme";
+import { colors } from "../../Theme";
 
 export const styles = StyleSheet.create({
     inputView: {
